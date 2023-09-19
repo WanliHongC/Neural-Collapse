@@ -23,8 +23,8 @@ data: directory to save generated datasets \
 opt_results: directory to save optimization results for UFM 
 
 ## Testing Environments:
-Use virtual environment tools (e.g miniconda) to install packages and run experiments
-python==3.8.17
+Use virtual environment tools (e.g miniconda) to install packages and run experiments \\
+python==3.8.17 \\
 pip install -r requirements.txt
 
 ## Example Code for Reproduction:
