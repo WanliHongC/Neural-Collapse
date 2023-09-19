@@ -10,6 +10,6 @@ Code for reproducing experiments for paper [Neural Collapse for Unconstrained Fe
 }
 ```
 
-Files Description:
-utils.py, train_utils.py, ana_utils.py: utility functions
-block_main.py: reproducing $NC_1$ and block structure of networks
+Files Description:\\
+utils.py, train_utils.py, ana_utils.py: utility functions \\
+block_main.py: reproducing $NC_1$ and block structure of networks \\
