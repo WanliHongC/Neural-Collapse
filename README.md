@@ -44,7 +44,7 @@ To reproduce experiment for angles plot against number of samples(Figure 9):\
 limit_main.py --nalist 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500\
 
 To solve optimization problem from UFM:\
-limit_main.py --cluster_s 3 3 4 --5000 4000 3000 --reg_z 0.005 --reg_b 0.01
+opt_main.py --cluster_s 3 3 4 --5000 4000 3000 --reg_z 0.005 --reg_b 0.01
 
 
 
