@@ -10,7 +10,7 @@ Code for reproducing experiments for paper [Neural Collapse for Unconstrained Fe
 }
 ```
 
-Files Description:\
+## Files Description:
 utils.py, train_utils.py, ana_utils.py: utility functions \
 block_main.py: reproducing $\mathcal{NC_1}$ and block structure of networks \
 minority_l_main.py: reproducing minority collapse for networks via changing regularization parameters \
@@ -22,12 +22,12 @@ plots: directory to save generated plots \
 data: directory to save generated datasets \
 opt_results: directory to save optimization results for UFM 
 
-Testing Environments:\
+## Testing Environments:
 Use virtual environment tools (e.g miniconda) to install packages and run experiments
 python==3.8.17
 pip install -r requirements.txt
 
-Example Code for Reproduction:\
+## Example Code for Reproduction:
 To reproduce experiment for $\mathcal{NC_1}$ and block structure (Figure 1 \& 2):\
 python block_main.py --dataset_t cifar10 --structure 1 --network ResNet18 
 
