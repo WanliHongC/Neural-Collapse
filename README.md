@@ -15,7 +15,7 @@ utils.py, train_utils.py, ana_utils.py: utility functions \
 block_main.py: reproducing $\mathcal{NC_1}$ and block structure of networks \
 minority_l_main.py: reproducing minority collapse for networks via changing regularization parameters \
 minority_n_main.py: reproducing minority collapse for networks via changing number of samples \
-limit_main.py: reproducing change of angles of networks \ 
+limit_main.py: reproducing change of angles of networks \
 opt_main.py: solving convex optimization from UFM \
 models: directory to save weight and outputs of models \
 plots: directory to save generated plots \
