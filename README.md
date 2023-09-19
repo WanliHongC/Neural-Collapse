@@ -16,10 +16,16 @@ block_main.py: reproducing $\mathcal{NC_1}$ and block structure of networks \
 minority_l_main.py: reproducing minority collapse for networks via changing regularization parameters \
 minority_n_main.py: reproducing minority collapse for networks via changing number of samples \
 limit_main.py: reproducing change of angles of networks \ 
+opt_main.py: solving convex optimization from UFM \
 models: directory to save weight and outputs of models \
 plots: directory to save generated plots \
-data: directory to save generated datasets 
+data: directory to save generated datasets \
+opt_results: directory to save optimization results for UFM 
 
+Testing Environments:\
+Use virtual environment tools (e.g miniconda) to install packages and run experiments
+python==3.8.17
+pip install -r requirements.txt
 
 Example Code for Reproduction:\
 To reproduce experiment for $\mathcal{NC_1}$ and block structure (Figure 1 \& 2):\
@@ -35,7 +41,10 @@ python minority_n_main.py --ka 5 --nalist 100 200 300 400 600 800 1000 1100 1200
 python minority_n_main.py --ka 3 --nalist 100 400 450 500 700 1000 1600 2200 2500 2800 
 
 To reproduce experiment for angles plot against number of samples(Figure 9):\
-limit_main.py --nalist 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500
+limit_main.py --nalist 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500\
+
+To solve optimization problem from UFM:\
+limit_main.py --cluster_s 3 3 4 --5000 4000 3000 --reg_z 0.005 --reg_b 0.01
 
 
 
