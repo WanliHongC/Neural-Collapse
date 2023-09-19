@@ -41,10 +41,10 @@ python minority_n_main.py --ka 5 --nalist 100 200 300 400 600 800 1000 1100 1200
 python minority_n_main.py --ka 3 --nalist 100 400 450 500 700 1000 1600 2200 2500 2800 
 
 To reproduce experiment for angles plot against number of samples(Figure 9):\
-limit_main.py --nalist 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500\
+python limit_main.py --nalist 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 5500
 
 To solve optimization problem from UFM:\
-opt_main.py --cluster_s 3 3 4 --5000 4000 3000 --reg_z 0.005 --reg_b 0.01
+python opt_main.py --cluster_s 3 3 4 --sample_s 5000 4000 3000 --reg_z 0.005 --reg_b 0.01
 
 
 
