@@ -58,14 +58,24 @@ def save_train_data(data_t,name,cluster_info):
             transforms.Normalize((0.4914, 0.4822, 0.4465), (0.247, 0.243, 0.261)),
         ])
         trainset = datasets.CIFAR10(root='data/', train=True, download=True, transform=transform)
+        testset = datasets.CIFAR10(root='data/', train=False, download=True, transform=transform)
     elif data_t == 'fashion_mnist':
         transform = transforms.Compose([transforms.Resize(32), transforms.ToTensor(),
                                         transforms.Normalize((0.2860,), (0.3530,))])
         trainset = datasets.FashionMNIST('data/', download=True, train=True, transform=transform)
+        testset = datasets.FashionMNIST(root='data/', train=False, download=True, transform=transform)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=1, shuffle=True,generator = torch.Generator(device='cuda'))
+    testloader = torch.utils.data.DataLoader(testset, batch_size=1, shuffle=True,generator = torch.Generator(device='cuda'))
     train_data = []
     label_num = [0] * 10
     for batch_idx, (inputs, targets) in enumerate(trainloader):
+        label_idx = int(targets[0].item())
+        if label_num[label_idx] >= cluster_info[label_idx]:
+          continue
+        train_data.append((inputs, targets))
+        label_num[label_idx] += 1
+    
+    for batch_idx, (inputs, targets) in enumerate(testloader):
         label_idx = int(targets[0].item())
         if label_num[label_idx] >= cluster_info[label_idx]:
           continue

@@ -33,7 +33,7 @@ if __name__ == "__main__":
                         default="cifar10", \
                         help='select dataset type cifar10 or fashion_mnist')
     parser.add_argument("--structure", type=int, default=1, \
-                        '1 or 2')
+                        help='1 or 2')
     parser.add_argument("--network", type=str, default="ResNet18", help='network to test with ResNet18, VGG11 or VGG13')
     parser.add_argument("--reg_b", type=float, default=0.01)
     parser.add_argument("--reg_h", type=float, default=1e-6)
@@ -41,17 +41,14 @@ if __name__ == "__main__":
     parser.add_argument("--epoch", type=int, default=1000)
     parser.add_argument("--ka", type=int, default=5)
     parser.add_argument("--nalist", type=int, default=5)
-    parser.add_argument("--nb", type=int,default=100)
     
     
-    parser.add_argument("--no_gpu", action='store_true', help="run model on CPU")
     
     argspar = parser.parse_args()
     
     cluster_info = {}
 
     # use CUDA?
-    argspar.cuda = not argspar.no_gpu and torch.cuda.is_available()
     cluster_info = {}
     if argspar.structure == 1:
         for i in range(10):
@@ -71,7 +68,7 @@ if __name__ == "__main__":
             else:
                 cluster_info[i] = 3000
                 
-    data_name = '002_data_'+str(argspar.structure)+'_'+argspar.dataset_t
+    data_name = '001_data_'+str(argspar.structure)+'_'+argspar.dataset_t
     if os.path.exists('data/'+data_name+'.pickle'):
         print('dataset already rendered')
     else:
@@ -84,15 +81,16 @@ if __name__ == "__main__":
     
     if argspar.dataset_t == 'cifar10':
         model, loss_function, optimizer = build_model(argspar.network,3,0.01,0.9,5e-4)
+        save_dir = 'models/001_'+argspar.network+'_'+'train'+'_0'+str(argspar.structure)
     elif argspar.dataset_t == 'fashion_mnist':
         model, loss_function, optimizer = build_model(argspar.network,1,0.01,0.9,5e-4)
+        save_dir = 'models/001_'+argspar.network+'_'+'f_train'+'_0'+str(argspar.structure)
     else:
         raise Exception("Invalid dataset choice, choose between either cifar10 or fashion_mnist")
         
     lr = 0.1
     batch_size = 128
     epochs = argspar.epoch
-    save_dir = 'models/001_'+argspar.network+'_'+argspar.dataset_t+'_'+str(argspar.structure)
     if os.path.exists(save_dir+'/model_epoch='+str(epochs)):
         print('Pretrained model exists, skipping training phase')
     else:
@@ -104,7 +102,7 @@ if __name__ == "__main__":
     
     var_dict = {}
     
-    if os.path.exists(save_dir+'/within_class_record.pickle'):
+    if os.path.exists(save_dir+'/within_class_vari.pickle'):
         print('NC1 already computed, skipping computing phase')
         with open(save_dir+'/within_class_record.pickle', 'rb') as f: 
             var_dict = pickle.load(f)
@@ -142,7 +140,7 @@ if __name__ == "__main__":
             var_dict[name] = variability
         
 
-        with open(save_dir+'/within_class_record.pickle', 'wb') as handle:
+        with open(save_dir+'/within_class_vari.pickle', 'wb') as handle:
             pickle.dump(var_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
             handle.close()
             

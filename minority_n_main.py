@@ -34,9 +34,9 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_t", type=str,\
                         default="cifar10", \
                         help='select dataset type cifar10 or fashion_mnist')
-    parser.add_argument("--nalist", nargs='+',type=int, default=[100,200,300,400,600,800,1000,1100,1200,1400], help="list of majority size to test with")
     parser.add_argument("--nb", type=int, default=100)
     parser.add_argument("--ka", type=int, default=5)
+    parser.add_argument("--nalist", nargs='+',type=int, default=[100,200,300,400,600,800,1000,1100,1200,1400], help="list of majority size to test with")
     parser.add_argument("--network", type=str, default="ResNet18", help='network to test with ResNet18, VGG11 or VGG13')
     parser.add_argument("--reg_b", type=float, default=0.01)
     parser.add_argument("--reg_l", type=float, default=0.005)
